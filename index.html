@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script src="./js/flower.js"></script>
+</head>
+
+
+<body>
+    <canvas id="id-flower"></canvas>
+    <div id="id-image-wrap">
+        <img id="id-happy-valentines-day" />
+    </div>
+    <script>
+        const imageWrapId = "id-image-wrap"
+        const imageId = "id-happy-valentines-day"
+        const imageSrc = "./asset/happy_valentine.gif"
+
+        const millis = 8000
+        setTimeout(() => {
+            window.dispatchEvent(new Event("anime-done"))
+        }, millis);
+
+        window.addEventListener("anime-done", () => {
+            const image = document.getElementById(imageId)
+            image.setAttribute("src", imageSrc)
+            const imageWrap = document.getElementById(imageWrapId)
+            imageWrap.setAttribute("style", [["opacity", 100]].map(line => `${line.join(':')};`))
+        })
+    </script>
+</body>
+<style>
+    body {
+        background-color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    canvas#id-flower {
+        width: 100%;
+    }
+
+    div#id-image-wrap {
+        transition: all 2s;
+        opacity: 0;
+        background-color: #FDC2C2;
+        position: absolute;
+        width: 100%;
+        display: flex;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img#id-happy-valentines-day {
+        height: 100vh;
+    }
+</style>
+
+</html>
